@@ -10,12 +10,6 @@ class Solution {
                 oddCount++;
             }
         }
-        if(min%2!=0){
-            return true;
-        }
-        if(min%2==0 && oddCount==0){
-            return true;
-        }
-        return false;
+        return min % 2 != 0 || oddCount == 0;
     }
 }
