@@ -14,18 +14,18 @@
  * }
  */
 class Solution {
-    List<Integer> preorder(TreeNode root,List<Integer> l){
-        if(root==null){
-            return l;
-        }
-        preorder(root.left,l);
-        l.add(root.val);
-        preorder(root.right,l);
+    public List<Integer> inorderTraversal(TreeNode root) {
+        List<Integer> l = new ArrayList<>();
+        l = inorder(root,l);
         return l;
     }
-    public List<Integer> inorderTraversal(TreeNode root) {
-         List<Integer> l = new ArrayList<>();
-         l = preorder(root,l);
-         return l;
+    List<Integer> inorder(TreeNode root,List<Integer> list){
+        if(root==null){
+            return list;
+        }
+        inorder(root.left,list);
+        list.add(root.val);
+        inorder(root.right,list);
+        return list;
     }
 }
