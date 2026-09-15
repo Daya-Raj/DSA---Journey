@@ -5,21 +5,15 @@ class Solution {
         int cnt = 0;
 
         while (left <= n - k) {
-
-            // Check palindrome of length k
             if (Helper(s, left, left + k - 1)) {
                 cnt++;
                 left = left + k;
             }
-
-            // Check palindrome of length k + 1
             else if (left + k < n &&
                      Helper(s, left, left + k)) {
                 cnt++;
                 left = left + k + 1;
             }
-
-            // No palindrome starting here
             else {
                 left++;
             }
