@@ -1,32 +1,27 @@
 class Solution {
-
     public TreeNode deleteNode(TreeNode root, int key) {
-
-        if (root == null) {
-            return null;
+        if(root == null)return null;
+        if(key<root.val){
+            root.left = deleteNode(root.left,key);
         }
-        if (key < root.val) {
-            root.left = deleteNode(root.left, key);
+        else if(key>root.val){
+            root.right = deleteNode(root.right,key);
         }
-        else if (key > root.val) {
-            root.right = deleteNode(root.right, key);
-        }
-        else {
-            if (root.left == null) {
+        else{
+            if(root.left == null){
                 return root.right;
             }
-            if (root.right == null) {
+            if(root.right == null){
                 return root.left;
             }
-            TreeNode successor = root.right;
-
-            while (successor.left != null) {
-                successor = successor.left;
+            TreeNode succ = root.right;
+            while(succ.left != null){
+                succ = succ.left;
             }
-            root.val = successor.val;
-            root.right = deleteNode(root.right, successor.val);
-        }
+            root.val = succ.val;
+            root.right = deleteNode(root.right,succ.val);
 
-        return root;
+        }
+        return root;    
     }
 }
